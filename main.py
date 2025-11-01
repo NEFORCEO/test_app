@@ -5,7 +5,9 @@ from routers.router import router
 
 app = FastAPI(
     title=config.title_app,
-    lifespan=start_app)
+    description=config.description,
+    lifespan=start_app
+    )
 
 
 app.include_router(router)

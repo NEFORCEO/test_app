@@ -13,6 +13,7 @@ class Add_devs(BaseModel):
     )
     
 class Error(BaseModel):
-    message: str 
+    message: str
+    
     
     
