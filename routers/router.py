@@ -10,10 +10,13 @@ from schemas.schema import Dev, Add_devs, Error
 router = APIRouter(
     prefix=config.prefix,
     tags=config.tags
+    
 )
 
 @router.get(
     "/get_devs",
+    summary=config.get_summary,
+    description=config.get_desc,
     response_model=list[Dev]
 )
 async def get_devs(db: SessionDep):
@@ -22,6 +25,8 @@ async def get_devs(db: SessionDep):
 
 @router.get(
     '/get_devs/{id}',
+    summary=config.get_summary_2,
+    description=config.get_desc_2,
     response_model=Dev,
     responses={
         404: {
@@ -46,6 +51,8 @@ async def get_devs_id(id: int, db: SessionDep):
 
 @router.post(
     "/add_devs",
+    summary=config.post_summary,
+    description=config.post_desc,
     response_model=Dev,
     responses={
         409: {
@@ -74,6 +81,8 @@ async def post_devs(devs: Add_devs, db: SessionDep):
     
 @router.put(
     "/patch_devs/{id}",
+    summary=config.put_summary,
+    description=config.put_desc,
     response_model=Dev,
     responses={
         404: {
@@ -106,6 +115,8 @@ async def patch_devs(id: int, update:Add_devs,  db: SessionDep):
 
 @router.delete(
     "/delete_devs/{id}",
+    summary=config.delete_summary,
+    description=config.delet_desc,
     response_model=Dev,
     responses={
         404: {
