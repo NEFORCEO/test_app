@@ -11,12 +11,13 @@ async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
-@asynccontextmanager
-async def get_session():
+
+
+async def get_session() -> AsyncSession:
     async with session_devs() as session:
         yield session
 
-SessionDep = Annotated[AsyncSession, Depends(get_session())]
+SessionDep = Annotated[AsyncSession, Depends(get_session)]
 
 
 @asynccontextmanager
