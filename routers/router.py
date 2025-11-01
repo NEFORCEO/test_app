@@ -18,7 +18,7 @@ async def get_devs(db: SessionDep) -> list[Dev]:
 
 @router.post('/add_devs')
 async def post_devs(devs: Add_devs, db: SessionDep) -> Dev:
-    if_valid_dev = await db.execute(select(Dev).filter(Dev.name == devs.name))
+    if_valid_dev = await db.execute(select(Devs).filter(Dev.name == devs.name))
     valid_dev = if_valid_dev.scalars().first()
 
     if valid_dev:
