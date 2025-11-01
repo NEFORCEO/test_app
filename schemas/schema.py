@@ -11,3 +11,7 @@ class Add_devs(BaseModel):
         min_length=5,
         max_length=25
     )
+    
+class Error(BaseModel):
+    message: str 
+    
